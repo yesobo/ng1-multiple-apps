@@ -1,0 +1,44 @@
+/* Variables */
+$dark-gray: #35261a;
+$light-gray: #4d3c35;
+$light-green: #b9d12e;
+$green: #94a103;
+$white: #fff;
+
+/* Configuration */
+$fa-font-path: '../../node_modules/font-awesome/fonts' !default;
+@if $NODE_ENV == production {
+  $fa-font-path: '/node_modules/font-awesome/fonts' ;
+}
+
+/* Dependencies */
+@import './../../node_modules/font-awesome/scss/font-awesome.scss';
+
+/* CSS Rules */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%
+}
+
+body {
+  background-color: $light-green;
+  font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+  margin: 0;
+}
+
+ng1-app {
+  background-color: $light-gray;
+  display: block;
+  color: $green;
+  font-size: 4em;
+  font-weight: bold;
+  padding: 30px;
+  width: 100%;
+
+  i.fa-hand-peace-o {
+    font-size: 2em;
+  }
+}

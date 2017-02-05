@@ -1,5 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
+var merge = require('webpack-merge');
 
 if (process.argv.indexOf('-p') !== -1) {
   process.env.NODE_ENV = 'production';
@@ -14,11 +15,12 @@ let config = {
 let ExtractTextPlugin = require('extract-text-webpack-plugin');
 let extractSCSS = new ExtractTextPlugin('bundle.css');
 
-module.exports = {
+var common = {
   entry: './src/main.js',
   output: { 
     path: config.output.path, 
-    filename: 'bundle.js' 
+    filename: 'bundle.js',
+    sourceMapFilename: '[file].map'
   },
   module: {
     rules: [{
@@ -54,3 +56,18 @@ module.exports = {
     contentBase: './src'
   }
 };
+
+if (process.env.NODE_ENV !== 'production' || !process.env.NODE_ENV) {
+  module.exports = merge(common, {
+    devtool: 'eval-source-map',
+    devServer: {
+      historyApiFallback: true
+    }
+  });
+}
+
+if (process.env.NODE_ENV === 'production') {
+  module.exports = merge(common, {
+    devtool: 'source-map'
+  });
+}
