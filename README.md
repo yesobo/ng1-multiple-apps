@@ -1,7 +1,1 @@
-# Web scaffold
-
-## React-Yarn-Babel-Webpack
-
-### Features
-
-[] vendor chunk
+# Managing several Angular 1.X apps in the same page
